@@ -8,7 +8,7 @@ import Home from './Pages/Home';
 
 
 function App() {
-  const user = "Pepe";
+  const user = null;
   const classes = useStyles();
   return (
     <div className={classes.root}>
@@ -36,7 +36,7 @@ function App() {
 const useStyles = makeStyles((theme) => ({
   root:{
     minHeight: "100vh",
-    //backgroundColor: "#111",
+    backgroundColor: "#111",
   },
 }));
 

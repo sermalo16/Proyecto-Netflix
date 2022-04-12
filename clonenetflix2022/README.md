@@ -34,3 +34,30 @@ material-ui/core, axios, firbase, react-router-dom, react-uuid, styled-component
 -- el eventListener esta activo un sola vez cada vez que refrescamos la pagina (useEffect con []).
 -- una vez montado el componente, hay que limpiarlo para que no nos quede colgado el eventlistener
 -- colocamos las rutas tanto a logo como al avatar
+
+### Comenzamos a trabajar en el banner
+
+-- hemos importado un pedazo de imagen como backgrounimagem 
+-- En react, tenemos que acomppañar los backgroundimages con estilos como object-fit y background-position
+-- como la descripcion viene de la API, tenemos que truncarla para asegurarnos de que nos cabe. para ello hemos declarado la funcion truncate.
+--hemos añadido un div vacio, que oscurece la imagen hasta fusionarla con el resto del UI, que es oscuro
+
+
+### Comenzamos a trabajar en el Login
+
+--hemos creado un boton con styled componets y le hemos llamado netflixbutton. este boton esta totalmente customizado y podremos variar su longitud, color y otros estilos, pasandoles props
+--styled componets para variar los estilos del input o del boton, pero para su posicionamiento, le damos una clase normal
+
+--Hemos creado un inpur personalizado en syled componets. le hemos llamad netflix input. como inputbase era ya un componentede material ui, pues lo hemmos llamado styled(inputbase). si hubiera sido un input base sty;es.input``
+
+### Componente profile
+
+-- hemos trabajado en ;a distribucion
+-- <plans>Texto</plans>
+-- const plans = () =>{return ()}
+-- pasar props a los styled-components.
+-- en el caso que el componente no sea binario, p.ej qeu el tamaño sea pequeño, mediano, o grande lo solucionanmos con un switch y una funcion
+
+### SignUp
+--Renderizado condicional. hemos creado una variable signin.
+-- si la variable es false, desplegamos el formulario.

@@ -1,16 +1,30 @@
 import React from 'react'
-import {makeStyles} from "@material-ui/core";
+import {makeStyles, Typography} from "@material-ui/core";
+import { NetflixButton } from '../styled/styledcomponets';
 
-const Plans = () => {
+const Plans = ({cost,children,color,wide}) => {
     const classes = useStyles();
     return (
-    <div>Plans</div>
+    <div className={classes.root}>
+      <Typography className={classes.standard} variant="h5">{children}</Typography>
+      <NetflixButton color={color} wide={wide}> subscribe</NetflixButton>
+    </div>
   )
 }
 
 const useStyles = makeStyles((theme) => ({
     root:{
-      
+      marginTop: theme.spacing(3),
+      marginBottom: theme.spacing(3),
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "space-between",
+      "& button": {
+        marginBottom: theme.spacing(2),
+      },
     },
+    standard:{
+      fontSize: "1.2rem",
+    }
   }));
 export default Plans
