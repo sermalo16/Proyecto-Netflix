@@ -5,17 +5,40 @@ import Profile from './Pages/Profile';
 import Login from './Pages/Login';
 import Paypal from './Pages/Paypal';
 import Home from './Pages/Home';
+import { useEffect } from "react";
+import { auth } from "./firebase";
+import { useDispatch, useSelector } from "react-redux";
+import { login, logout, SelectUser } from "./features/UserSlice";
 
 
 function App() {
-  const user = null;
+  const user = useSelector(SelectUser);
   const classes = useStyles();
+  const dispatch = useDispatch();
+
+  useEffect( () => {
+    const unsubscribe = auth.onAuthStateChanged((userAuth)=>{
+      if(userAuth){
+        dispatch(login({
+          uid: userAuth.uid,
+          email: userAuth.email
+        }))
+      }else {
+        dispatch(logout)
+      }
+    })//
+    return unsubscribe;
+  }, [dispatch])
+
+
   return (
     <div className={classes.root}>
       <Router>
       {
-        !user ? (<Login/>):(
           <Switch>
+            <Route path="/login">
+              <Login />
+            </Route>
             <Route path='/profile'>
               <Profile/>
             </Route>
@@ -26,7 +49,6 @@ function App() {
               <Home/>
             </Route>
           </Switch>
-        )
       }
       </Router>
     </div>

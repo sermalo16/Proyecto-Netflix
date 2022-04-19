@@ -61,3 +61,26 @@ material-ui/core, axios, firbase, react-router-dom, react-uuid, styled-component
 ### SignUp
 --Renderizado condicional. hemos creado una variable signin.
 -- si la variable es false, desplegamos el formulario.
+
+### proceso de registro / inicio de sesion del
+
+-- habilitado una cuenta en firebase en la
+-- inicializado el objeto auth de firebase
+-- capturado los datos tecleados por el usuario dentro del formulario
+-- registrado de email y pasword con auth.create...
+-- signin con auth.signInWithEmail ...
+
+### redux
+
+-- Habilitamos el slice UserSlice para manejar el usuario en el componente que queramos
+
+### Persistencia
+
+-- hemos agregado un eventlistener en APP.js
+-- este eventelistner lo trae el obj auth, escucha cada vez que cambia el usuario en firebase.
+-- cada vez que cambia, vuelve a inyectar el usuario en la capa de datos de userSlice(redux)
+
+### Requests
+
+-- vamos a construir el componente Rows
+-- hemos habilitado todos los enpoints para acceder a themoviedb y extraer los distintos objetos con toda la informacion clasificada por genero
