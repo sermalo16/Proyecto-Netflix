@@ -84,3 +84,10 @@ material-ui/core, axios, firbase, react-router-dom, react-uuid, styled-component
 
 -- vamos a construir el componente Rows
 -- hemos habilitado todos los enpoints para acceder a themoviedb y extraer los distintos objetos con toda la informacion clasificada por genero
+
+
+### hemos todads las llamadas al API de themoviedb
+
+-- con useEffect, hacemos llamadas asyncronas mediante una funciona  a la que hemos llamado fetchDaa
+-- esta funcion devuelve requests.data.results, que es un array con todas las peliculas del-
+-- las desplegamos en el UI

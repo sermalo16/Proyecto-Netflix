@@ -1,25 +1,54 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import {Button, makeStyles, Typography} from "@material-ui/core";
 import luciferBanner from "../Imagenes/Lucifer-banner.jpg";
+import axios2 from '../axios';
+import request from "../Requests";
 
 const Banner = () => {
     const classes = useStyles();
 
     //funcion para recortar la descripcion
     const truncate = (string, n) => string?.length > n ? `${string.substr(0, n-1)} ...` : string
+
+    const [movies, setMovies] = useState([]);
+    useEffect(() => {
+      const fetchData = async () => {
+        const requests = await axios2.get(request.fetchNetflixOriginals)
+        // tenemos un array de peliculas en request.data.results
+        // generamos un numero random entre 0 y la longitud del array, para obtener un indice aleatorio
+        const random = Math.floor(Math.random() * requests.data.results.length - 1);
+        // mostraremos en pantalla request.data.results[random]
+        setMovies(requests.data.results[random]);
+        return requests;
+      }
+      fetchData();
+    }, [])
+
+    console.log(movies);
   return (
-    <div className={classes.root}>
+    <div className={classes.root} style={{
+      backgroundImage: `url("https://image.tmdb.org/t/p/original/${movies?.backdrop_path}")`,
+      position: 'relative',
+      height: '440px',
+      objectFit: "contain",
+      BackgroundSize: "cover",
+      backgroundPosition: "center",
+      color: "#fff",
+    }}>
       <div className={classes.content}>
         <Typography variant="h2" component="h1">
-          Movie Tittle
+          {movies?.title || movies?.name || movies?.original_name}
         </Typography>
         <div className={classes.buttons}>
           <Button>Play</Button>
           <Button>My List</Button>
         </div>
-        <Typography variant="h6" className={classes.description}>
+        <Typography
+        style={{wordWrap: "break-word"}}
+        variant="h6"
+        className={classes.description}>
           {
-            truncate("Movie description Movie description Movie ",160)
+            truncate(movies?.overview,160)
           }
         </Typography>
 
@@ -32,7 +61,7 @@ const Banner = () => {
 
 const useStyles = makeStyles((theme) => ({
     root:{
-      backgroundImage: `url(${luciferBanner})`,
+      //backgroundImage: `url(${luciferBanner})`,
       position: 'relative',
       height: '440px',
       objectFit: "contain",
